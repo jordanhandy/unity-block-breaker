@@ -34,25 +34,32 @@ public class GameStatus : MonoBehaviour
     }
     private void Start()
     {
+        // set the current score at game start
         scoreText.text = currentScore.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // set the game speed based on the speed set
         Time.timeScale = gameSpeed;
 
     }
     public void AddToScore()
     {
+        // add to the user's current score based on when a block is destroyed
         currentScore += pointsPerBlockDestroyed;
+        // text is updated on screen
         scoreText.text = currentScore.ToString();
 
     }
+    // At game reset, destroy this game object, and create a new one
     public void ResetGame()
     {
         Destroy(gameObject);
     }
+    // checking if autoplay is enabled
+    // used for debugging purposed to auto play the game
     public bool IsAutoPlayEnabled()
     {
         return isAutoplayEnabled;
